@@ -16,6 +16,25 @@
 #define extra_layer 4
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        Gaming {
+            bindings = <&tog 3>;
+            key-positions = <55 52 3>;
+        };
+
+        Default {
+            bindings = <&tog 4>;
+            key-positions = <52 42 55 4>;
+        };
+
+        GotoDefault {
+            bindings = <&to 0>;
+            key-positions = <1 52 55>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -30,11 +49,11 @@
             //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
 
             bindings = <
-&kp ESC         &kp N1  &kp N2  &kp N3        &kp N4        &kp N5                                &kp N6  &kp N7         &kp N8     &kp N9   &kp N0    &kp DELETE
-&kp TAB         &kp Q   &kp W   &kp E         &kp R         &kp T                                 &kp Y   &kp U          &kp I      &kp O    &kp P     &kp SQT
-&kp LEFT_SHIFT  &kp A   &kp S   &kp D         &kp F         &kp G                                 &kp H   &kp J          &kp K      &kp L    &kp SEMI  &kp MINUS
-&kp LCTRL       &kp Z   &kp X   &kp C         &kp V         &kp B   &kp PAGE_UP    &kp PAGE_DOWN  &kp N   &kp M          &kp COMMA  &kp DOT  &kp FSLH  &kp EQUAL
-                                &kp LEFT_GUI  &kp LEFT_ALT  &mo 1   &kp SPACE      &kp RET        &mo 2   &kp BACKSPACE  &kp RALT
+&kp ESC         &kp N1  &kp N2  &kp N3        &kp N4        &kp N5                                        &kp N6  &kp N7         &kp N8     &kp N9   &kp N0    &kp DELETE
+&kp TAB         &kp Q   &kp W   &kp E         &kp R         &kp T                                         &kp Y   &kp U          &kp I      &kp O    &kp P     &kp SQT
+&kp LEFT_SHIFT  &kp A   &kp S   &kp D         &kp F         &kp G                                         &kp H   &kp J          &kp K      &kp L    &kp SEMI  &kp MINUS
+&kp LCTRL       &kp Z   &kp X   &kp C         &kp V         &kp B   &kp LG(PAGE_UP)    &kp LG(PAGE_DOWN)  &kp N   &kp M          &kp COMMA  &kp DOT  &kp FSLH  &kp EQUAL
+                                &kp LEFT_ALT  &kp LEFT_GUI  &mo 1   &kp SPACE          &kp RET            &mo 2   &kp BACKSPACE  &kp RALT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -72,18 +91,18 @@
             //                     |      |      |      |        |  |       |      |       |       |
 
             bindings = <
-&trans  &bt BT_SEL 0     &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_CLR  &bt BT_CLR_ALL                    &studio_unlock  &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &none      &none     &trans
-&trans  &kp C_VOLUME_UP  &kp F1        &kp F2        &kp F3      &kp F4                            &kp PG_UP       &none                 &kp UP_ARROW          &none      &none     &trans
-&trans  &kp C_VOL_DN     &kp F5        &kp F6        &kp F7      &kp F8                            &kp PAGE_DOWN   &kp LEFT              &kp DOWN              &kp RIGHT  &none     &trans
-&trans  &kp K_MUTE       &kp F9        &kp F10       &kp F11     &kp F12         &trans    &trans  &kp C_AC_HOME   &kp MINUS             &kp EQUAL             &kp LBKT   &kp RBKT  &kp BSLH
-                                       &trans        &trans      &trans          &trans    &trans  &trans          &trans                &trans
+&trans  &bt BT_SEL 0     &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_CLR  &bt BT_CLR_ALL                          &studio_unlock  &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &none      &none     &trans
+&trans  &kp C_VOLUME_UP  &kp F1        &kp F2        &kp F3      &kp F4                                  &kp PG_UP       &none                 &kp UP_ARROW          &none      &none     &trans
+&trans  &kp C_VOL_DN     &kp F5        &kp F6        &kp F7      &kp F8                                  &kp PAGE_DOWN   &kp LEFT              &kp DOWN              &kp RIGHT  &none     &trans
+&trans  &kp K_MUTE       &kp F9        &kp F10       &kp F11     &kp F12         &trans          &trans  &kp C_AC_HOME   &kp MINUS             &kp EQUAL             &kp LBKT   &kp RBKT  &kp BSLH
+                                       &trans        &trans      &trans          &kp LEFT_GUI    &trans  &trans          &trans                &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        adjust_layer {
-            display-name = "Adjust";
+        Gaming {
+            display-name = "Gaming";
 
             // ------------------------------------------------------------------------------------------------------------
             // |       |     |     |      |      |      |                   |      |       |       |      |       |       |
@@ -93,17 +112,17 @@
             //                     |      |      |      |        |  |       |      |       |       |
 
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
+&trans  &trans     &kp N1  &kp N2     &kp N3     &kp N4                           &kp N5  &kp N6  &kp N7  &kp N8     &kp N9   &kp N0
+&kp T   &kp TAB    &kp Q   &kp W      &kp E      &kp R                            &kp T   &kp Y   &kp U   &kp I      &kp O    &kp P
+&kp G   &kp LSHFT  &kp A   &kp S      &kp D      &kp F                            &kp G   &kp H   &kp J   &kp K      &kp L    &kp SEMI
+&kp B   &kp LCTRL  &kp Z   &kp X      &kp C      &kp V    &kp MINUS    &kp EQUAL  &kp B   &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH
+                           &kp LCTRL  &kp LSHFT  &kp RET  &kp SPACE    &trans     &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        extra_layer {
+        colemak_dh {
             display-name = "Extra";
 
             // ------------------------------------------------------------------------------------------------------------
@@ -114,11 +133,11 @@
             //                     |      |      |      |        |  |       |      |       |       |
 
             bindings = <
-&trans  &trans          &trans          &trans           &trans  &trans                                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans          &mmv MOVE_UP    &trans           &trans  &trans                                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &msc SCRL_DOWN                          &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans          &trans          &trans           &trans  &msc SCRL_UP    &mkp LCLK    &mkp RCLK  &trans  &trans  &trans  &trans  &trans  &trans
-                                        &trans           &trans  &trans          &trans       &trans     &trans  &trans  &trans
+&kp ESC  &kp N1  &kp N2  &kp N3    &kp N4    &kp N5                          &kp N6  &kp N7    &kp N8     &kp N9   &kp N0    &trans
+&trans   &kp Q   &kp W   &kp F     &kp P     &kp B                           &kp J   &kp L     &kp U      &kp Y    &kp SEMI  &trans
+&trans   &kp A   &kp R   &kp S     &kp T     &kp G                           &kp M   &kp N     &kp E      &kp I    &kp O     &kp APOS
+&trans   &kp Z   &kp X   &kp C     &kp D     &kp V   &mkp LCLK    &mkp RCLK  &kp K   &kp H     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+                         &kp LALT  &kp LGUI  &trans  &kp SPACE    &kp ENTER  &trans  &kp BSPC  &kp RALT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
